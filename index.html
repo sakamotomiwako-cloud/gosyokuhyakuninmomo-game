@@ -361,16 +361,23 @@ function escapeHtml(s){
 function speechAvailable(){
   return 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
 }
-function speak(text){
-  if(!speechAvailable()) return;
+function speak(text, onEnd){
+  if(!speechAvailable()){
+    if(onEnd) onEnd();
+    return;
+  }
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "ja-JP";
   u.rate = 1.0;
   u.pitch = 1.0;
   u.volume = 1.0;
+
+  if(onEnd) u.onend = onEnd; // ★読み終わったら呼ぶ
+
   window.speechSynthesis.speak(u);
 }
+
 (function initVoice(){
   voiceStatus.textContent = speechAvailable() ? "音声：対応（端末依存）" : "音声：非対応";
 })();
@@ -514,13 +521,18 @@ function renderQuestion(){
 
       showResult(isCorrect, q.shimo);
 
-      setTimeout(()=>{
-        if (speechAvailable()) window.speechSynthesis.cancel(); // 読み上げ残り防止
-        qIndex++;
-        renderQuestion();
-      }, 900);
-    });
+if(!isCorrect && speechAvailable()){
+  // 不正解：下の句を読み終えてから次へ
+  speak(q.shimo, () => {
+    qIndex++;
+    renderQuestion();
   });
+} else {
+  // 正解：テンポよく次へ
+  setTimeout(()=>{
+    qIndex++;
+    renderQuestion();
+  }, 600);
 }
 
 // ---------- 正誤表示（不正解時のみ下の句読み上げ） ----------
@@ -592,4 +604,5 @@ btnSpeak.addEventListener("click", ()=>{
 </script>
 </body>
 </html>
+
 
