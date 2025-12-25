@@ -550,11 +550,7 @@ function showResult(isCorrect, correctText){
   showEffect(isCorrect ? "ok" : "ng");
 
   // ★不正解のときだけ、正しい下の句を読み上げる
-  if(!isCorrect && speechAvailable()){
-    window.speechSynthesis.cancel();
-    setTimeout(() => speak(correctText), 200);
   }
-}
 
 // ---------- 間違い札一覧（通常ゲーム終了時） ----------
 function renderMissList(){
@@ -604,5 +600,6 @@ btnSpeak.addEventListener("click", ()=>{
 </script>
 </body>
 </html>
+
 
 
