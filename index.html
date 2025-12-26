@@ -122,105 +122,8 @@
       border:1px solid rgba(214,178,94,.45);
       padding: 6px 10px;
       border-radius: 999px;
-      font-size: 12px;
-      color:#222;
-      position:relative;
-      z-index:1;
-    }
+      font-size:
 
-    /* 上の句：短冊っぽく */
-    .kami{
-      font-size: 26px;
-      line-height: 1.58;
-      margin: 10px 0 0;
-      padding: 14px 14px;
-      border-radius: 16px;
-      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.60));
-      border: 1px solid rgba(214,178,94,.45);
-      position:relative;
-      overflow:hidden;
-    }
-    .kami::before{
-      content:"";
-      position:absolute;
-      left:12px;
-      right:12px;
-      top:10px;
-      height:2px;
-      background: linear-gradient(90deg, transparent, rgba(214,178,94,.9), transparent);
-      opacity:.8;
-    }
-    .kami::after{
-      content:"";
-      position:absolute;
-      left:12px;
-      right:12px;
-      bottom:10px;
-      height:2px;
-      background: linear-gradient(90deg, transparent, rgba(214,178,94,.7), transparent);
-      opacity:.7;
-    }
-
-    #choices{ display:grid; gap:10px; }
-
-    button.choice{
-      width:100%;
-      text-align:left;
-      padding: 14px 14px;
-      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.66));
-      color:#111;
-      font-weight: 800;
-      border:1px solid rgba(0,0,0,.07);
-      box-shadow: 0 10px 18px rgba(0,0,0,.10);
-    }
-    button.choice:nth-child(1){ border-left: 10px solid var(--beni); }
-    button.choice:nth-child(2){ border-left: 10px solid var(--aka); }
-    button.choice:nth-child(3){ border-left: 10px solid var(--ai); }
-    button.choice:nth-child(4){ border-left: 10px solid var(--fuji); }
-    button.choice:hover{ filter: brightness(1.03); }
-
-    .result{
-      font-size: 16px;
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 16px;
-      border:1px solid rgba(0,0,0,.06);
-      box-shadow: 0 10px 18px rgba(0,0,0,.08);
-    }
-    .ok{
-      background: linear-gradient(135deg, rgba(46,155,109,.18), rgba(255,255,255,.82));
-      border-color: rgba(46,155,109,.25);
-    }
-    .ng{
-      background: linear-gradient(135deg, rgba(255,79,123,.20), rgba(255,255,255,.82));
-      border-color: rgba(255,79,123,.25);
-    }
-
-    .footer{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    /* 間違い札リストも和紙っぽく */
-    #missList .result.ng{ border: 1px solid rgba(255,79,123,.28); }
-    #missList > div[style*="border-radius"]{
-      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.70)) !important;
-      border: 1px solid rgba(214,178,94,.35) !important;
-    }
-
-    @media (max-width: 520px){
-      .kami{ font-size: 22px; }
-      button{ width:100%; }
-      .row{ gap:8px; }
-    }
-
-    /* ===== 和風エフェクト（正解：金粉／不正解：花びら） ===== */
-    .effect-layer{
-      position: fixed;
-      inset: 0;
       pointer-events: none;
       z-index: 9999;
       overflow: hidden;
@@ -592,3 +495,4 @@ btnSpeak.addEventListener("click", ()=>{
 </script>
 </body>
 </html>
+
